@@ -11,8 +11,8 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -35,14 +35,29 @@ import assignment.Validate;
 public class FormQLNV extends JFrame {
 
 	protected static final int ERROR_MESSAGE = 0;
+	private JTable table;
 	private JPanel contentPane;
 	private JTextField textCode;
 	private JTextField textAge;
 	private JTextField textEmail;
 	private JTextField textSalary;
+	private JTextField textField;
 	private JTextField textName = new JTextField();
-	public static JTable table;
-	Scanner sc = new Scanner(System.in);
+
+	private JButton btnLast = new JButton(">|");
+	private JButton btnNext = new JButton(">>");
+	private JButton btnPrevious = new JButton("<<");
+	private JButton btnFirst = new JButton("|<");
+	private JButton btnFind = new JButton("Find");
+	private JButton btnDelete = new JButton("Delete");
+	private JButton btnSave = new JButton("Update");
+	private JButton btnSearch = new JButton("T\u00ECm ki\u1EBFm");
+
+	private JLabel lblRecord = new JLabel("Record 0 of 0");
+	private JPanel panel = new JPanel();
+	private JPanel panel1 = new JPanel();
+	private JLabel lblHoTen = new JLabel("H\u1ECC T\u00CAN");
+
 	StaffList staff = new StaffList();
 	DefaultTableModel model = new DefaultTableModel();
 	DecimalFormat fmSalary = new DecimalFormat("#,###");
@@ -72,20 +87,6 @@ public class FormQLNV extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	JLabel lblRecord = new JLabel("Record 0 of 0");
-	private JTextField textField;
-	JPanel panel = new JPanel();
-	JPanel panel1 = new JPanel();
-	JLabel lblHoTen = new JLabel("H\u1ECC T\u00CAN");
-
-	JButton btnLast = new JButton(">|");
-	JButton btnNext = new JButton(">>");
-	JButton btnPrevious = new JButton("<<");
-	JButton btnFirst = new JButton("|<");
-	JButton btnFind = new JButton("Find");
-	JButton btnDelete = new JButton("Delete");
-	JButton btnSave = new JButton("Update");
-	JButton btnSearch = new JButton("T\u00ECm ki\u1EBFm");
 
 	public FormQLNV() {
 
@@ -214,7 +215,8 @@ public class FormQLNV extends JFrame {
 						e1.printStackTrace();
 					}
 					System.exit(0);
-				} else System.exit(0);
+				} else
+					System.exit(0);
 			}
 		});
 		btnExit.setBackground(SystemColor.activeCaptionBorder);
@@ -224,7 +226,7 @@ public class FormQLNV extends JFrame {
 		panel.add(btnExit);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(13, 356, 634, 192);
+		scrollPane.setBounds(10, 356, 634, 192);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -388,6 +390,26 @@ public class FormQLNV extends JFrame {
 		btnPrevious.setEnabled(false);
 		btnFind.setEnabled(false);
 		btnDelete.setEnabled(false);
+		
+		JLabel background1 = new JLabel();
+		background1.setIcon(new ImageIcon("C:\\Users\\ADMIN\\eclipse-workspace\\Assignment_Java2_PH12794\\image\\bkg1.jpg"));
+		background1.setBounds(0, 0, 671, 599);
+		
+		JLabel background2 = new JLabel();
+		background2.setIcon(new ImageIcon("C:\\Users\\ADMIN\\eclipse-workspace\\Assignment_Java2_PH12794\\image\\bkg2.jpg"));
+		background2.setBounds(0, 0, 488, 203);
+		
+		JLabel background3 = new JLabel();
+		background3.setIcon(new ImageIcon("C:\\Users\\ADMIN\\eclipse-workspace\\Assignment_Java2_PH12794\\image\\bkg3.jpg"));
+		background3.setBounds(0, 0, 100, 258);
+		
+		
+		contentPane.add(background1);
+		panel1.add(background2);
+		panel.add(background3);
+		
+		
+		
 	}
 
 	public void move() {
@@ -413,7 +435,7 @@ public class FormQLNV extends JFrame {
 		table.getColumnModel().getColumn(0).setPreferredWidth(20);
 		table.getColumnModel().getColumn(2).setPreferredWidth(10);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
-
+		
 	}
 
 	public void newFrom() {
